@@ -21,12 +21,12 @@ function Nav() {
 										Home
 									</Link>
 									<Link className="dark:text-gray-200 hover:bg-gray-700 text-gray-1000 px-3 py-2 rounded-md text-sm font-medium"
-										to="characters"
+									to="/characters"
 									>
 										Characters
 									</Link>
 									<Link className="dark:text-gray-200 hover:bg-gray-700 text-gray-1000 px-3 py-2 rounded-md text-sm font-medium"
-										to="characters"
+									to="/characters"
 									>
 										TBD
 									</Link>
@@ -97,7 +97,7 @@ function Nav() {
 										Home
 									</Link>
 									<Link className="dark:text-gray-200 hover:bg-gray-700 text-gray-1000 block px-3 py-2 rounded-md text-base font-medium"
-										to="characters"
+									to="/characters"
 									>
 										Characters
 									</Link>

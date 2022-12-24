@@ -1,14 +1,24 @@
 export enum Race {
 	Asari,
-		Human,
-		Galarian
+	Human,
+	Galarian,
+	Krogan,
+	Drell,
+	Butarien,
 }
 
 export enum Attribute {
 	Spirit,
-		Charisma,
-		Perception,
-		Vigor,
-		Dexterity,
-		Biotics
+	Charisma,
+	Perception,
+	Vigor,
+	Dexterity,
+	Biotics,
 }
+
+export interface Character {
+	name: string
+	race: string
+	stats: Record<Attribute, number>
+}
+
