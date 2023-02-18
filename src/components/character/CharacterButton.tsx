@@ -15,7 +15,7 @@ export default function CharacterBox(props: CharacterProps) {
 							{character.name}
 						</div>
 						<div className="flex-auto">
-							{character.species.Name} {character.level?.Name}. Employeur: {character.career?.ShortName}
+							{character.species.Name} {character.level.Name}. Employeur: {character.career?.ShortName}
 						</div>
 					</div>
 				</label>

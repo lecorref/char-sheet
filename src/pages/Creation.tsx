@@ -2,13 +2,18 @@ import { FormEvent, useState } from "react";
 import RaceSelection from "./creationForm/RaceSelection"
 import DetailSelection from "./creationForm/DetailSelection"
 import CampaignSelection from "./creationForm/CampaignSelection"
+import AttributeSelection from "./creationForm/AttributeSelection";
 import Steps from "./creationForm/Steps";
-import { ICharacter } from "../utils/Interfaces"
+import { EAttribute, ICharacter, ISpecies } from "../utils/Interfaces"
 import { Species } from "../utils/Species"
 import { Careers } from "../utils/Career";
 import { Levels } from "../utils/Level";
 import useLocalStorageState from "use-local-storage-state";
 import { useNavigate } from 'react-router-dom';
+
+function defaultAttributes(species: ISpecies): [EAttribute, number][] {
+	return species.DefaultAttr.map(item => ([item.attr, item.Vdefault]))
+}
 
 const INITIAL_DATA: ICharacter = {
 	species: Species[0],
@@ -16,10 +21,10 @@ const INITIAL_DATA: ICharacter = {
 	age: undefined,
 	career: Careers[0],
 	unit: '',
-	attributes: '',
+	attributes: defaultAttributes(Species[0]),
 	abilities: '',
 	talents: '',
-	level: Levels[3]
+  level: Levels[2],
 };
 
 function Creation() {
@@ -29,26 +34,30 @@ function Creation() {
 	const { steps, currentStepIndex, step, isFirstStep, isLastStep, back, next } = Steps([
 		<CampaignSelection {...data} updateFields={updateFields} />,
 		<RaceSelection {...data} updateFields={updateFields} />,
+		<AttributeSelection {...data} updateFields={updateFields} />,
 		<DetailSelection {...data} updateFields={updateFields} />,
 	])
 
 	function updateFields(fields: Partial<ICharacter>) {
 		console.log(fields)
 		setData(prev => {
-			return { ...prev, ...fields }
+			return { ...prev, ...fields };
 		})
 	}
 
 	function onSubmit(e: FormEvent) {
 		e.preventDefault()
+		if (currentStepIndex < 2) {
+			updateFields({attributes: defaultAttributes(data.species)})
+		}
 		if (!isLastStep) {
-			return next()
+			return next();
 		}
 		if (characters)
-			setCharacters([...characters, data])
+			setCharacters([...characters, data]);
 		else
-			setCharacters([data])
-		navigate('/characters')
+			setCharacters([data]);
+		navigate('/characters');
 	}
 
 	return (

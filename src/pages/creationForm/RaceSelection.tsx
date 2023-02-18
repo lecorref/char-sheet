@@ -20,6 +20,7 @@ export default function RaceSelection({
 }: FormProps) {
 	const [expanded, setExpanded] = useState(false)
 	const toggleExpanded = () => setExpanded((current) => !current)
+
 	return(
 		<FormWrapper title="Selection de la race" subtitle="Votre race determinera votre talent inné, ainsi que les valeurs maximal de vos characteristiques. Certaines races commencent avec un talent biotique inné, mais auront moins de points pour developper leurs autres capacitées.">
 			<div>
@@ -54,13 +55,13 @@ export default function RaceSelection({
 											{item.Description}
 										</p>
 									</div>
-							</label>
-				</li>
+								</label>
+							</li>
 						)
 											 )
 					}
-			</ul>
-		</div>
+				</ul>
+			</div>
 		</FormWrapper>
 	);
 }

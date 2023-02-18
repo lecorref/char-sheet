@@ -7,7 +7,7 @@ export enum Race {
 	Butarien,
 }
 
-export enum Attribute {
+export enum Attributes {
 	Spirit,
 	Charisma,
 	Perception,
@@ -15,10 +15,3 @@ export enum Attribute {
 	Dexterity,
 	Biotics,
 }
-
-export interface Character {
-	name: string
-	race: string
-	stats: Record<Attribute, number>
-}
-

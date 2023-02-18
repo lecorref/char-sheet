@@ -8,7 +8,7 @@ const CampaignSelectCss ="bg-gray-50 border border-gray-300 text-gray-900 text-s
 type UserData = {
 	career?: ICareer
 	unit?: string
-	level?: ILevel
+	level: ILevel
 }
 
 type UserFormProps = UserData & {
