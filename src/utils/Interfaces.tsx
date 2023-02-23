@@ -1,9 +1,13 @@
+import {ISkill} from "./Skills";
+
 export interface ILevel {
 	readonly Id: number;
 	readonly Name: string;
 	readonly Description: string;
 	readonly Available: boolean;
-	readonly Points: number;
+	readonly attr_points: number;
+	readonly skill_points: number;
+	readonly talent_points: number;
 }
 
 export interface ICareer {
@@ -38,13 +42,13 @@ export interface ISpecies {
 }
 
 export interface ICharacter {
-	species: ISpecies
-	name: string
-	age?: number
-	career?: ICareer
-	unit?: string
-	attributes: [EAttribute, number][]
-	talents?: string
-	abilities?: string
-	level: ILevel
+	species: ISpecies;
+	name: string;
+	age?: number;
+	career?: ICareer;
+	unit?: string;
+	attributes: [EAttribute, number][];
+	talents?: string;
+	skills: ISkill[];
+	level: ILevel;
 }

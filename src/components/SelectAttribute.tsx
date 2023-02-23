@@ -25,10 +25,10 @@ export default function SelectAttribute({
 	Object.assign(rows, Array.from(Array(attr.Vmax + 1).keys()));
 
 	function getAttributeValue(attributes: [EAttribute, number][], value: EAttribute): [EAttribute, number] {
-		let ret = attributes.find(elem => (elem[0] === value))
+		let ret = attributes.find(elem => (elem[0] === value));
 		if (ret == undefined)
-			return [EAttribute.Mind, 2]
-		return ret
+			return [EAttribute.Mind, 2];
+		return ret;
 	}
 
 	const [value, setValue] = useState(getAttributeValue(attributes, attr.attr)[1]);
@@ -41,8 +41,8 @@ export default function SelectAttribute({
 				setAttrPoint(points);
 				updateFields({attributes: attributes.map(elem  => {
 					if (elem[0] == attr.attr)
-						elem[1] = val
-					return elem
+						elem[1] = val;
+					return elem;
 				})})
 			}
 		}

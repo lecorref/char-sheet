@@ -10,6 +10,8 @@ import { Careers } from "../utils/Career";
 import { Levels } from "../utils/Level";
 import useLocalStorageState from "use-local-storage-state";
 import { useNavigate } from 'react-router-dom';
+import SkillSelection from "./creationForm/SkillSelection";
+import {ISkill, Skills} from "utils/Skills";
 
 function defaultAttributes(species: ISpecies): [EAttribute, number][] {
 	return species.DefaultAttr.map(item => ([item.attr, item.Vdefault]))
@@ -22,7 +24,7 @@ const INITIAL_DATA: ICharacter = {
 	career: Careers[0],
 	unit: '',
 	attributes: defaultAttributes(Species[0]),
-	abilities: '',
+	skills: JSON.parse(JSON.stringify(Skills)),
 	talents: '',
   level: Levels[2],
 };
@@ -35,8 +37,22 @@ function Creation() {
 		<CampaignSelection {...data} updateFields={updateFields} />,
 		<RaceSelection {...data} updateFields={updateFields} />,
 		<AttributeSelection {...data} updateFields={updateFields} />,
+		<SkillSelection {...data} updateFields={updateFields} />,
 		<DetailSelection {...data} updateFields={updateFields} />,
 	])
+
+  function resetSkills() {
+		Skills.map(elem => {
+			elem.level = 1;
+			resetSpecialties(elem)
+		})
+	}
+
+	function resetSpecialties(skill: ISkill) {
+		skill.specialities.map(elem => {
+			elem.chosen = false;
+		})
+	}
 
 	function updateFields(fields: Partial<ICharacter>) {
 		console.log(fields)
@@ -47,8 +63,10 @@ function Creation() {
 
 	function onSubmit(e: FormEvent) {
 		e.preventDefault()
-		if (currentStepIndex < 2) {
+		if (currentStepIndex == 1) {
 			updateFields({attributes: defaultAttributes(data.species)})
+			resetSkills()
+			updateFields({skills: JSON.parse(JSON.stringify(Skills))})
 		}
 		if (!isLastStep) {
 			return next();
