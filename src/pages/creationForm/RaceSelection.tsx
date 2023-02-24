@@ -2,9 +2,11 @@ import { useState } from 'react';
 import { FormWrapper } from "../../components/FormWrapper"
 import { Species } from "../../utils/Species"
 import { ISpecies } from "../../utils/Interfaces"
+import {ITalent, RacialTalentList} from 'utils/Talents';
 
 type UserData = {
 	species: ISpecies
+	talents?: ITalent[]
 }
 
 const minusIcon = '-'
@@ -16,10 +18,24 @@ type FormProps = UserData & {
 
 export default function RaceSelection({
 	species,
+	talents,
 	updateFields,
 }: FormProps) {
-	const [expanded, setExpanded] = useState(false)
-	const toggleExpanded = () => setExpanded((current) => !current)
+	const [expanded, setExpanded] = useState(false);
+	const toggleExpanded = () => setExpanded((current) => !current);
+
+	function updateTalent(id: number): ITalent[] {
+		let talent = Object.create(RacialTalentList[id]);
+		talent.level = 1;
+		return ([talent]);
+	}
+	
+	function updateSelection(choice: ISpecies) {
+		updateFields({
+			species: choice,
+			talents: updateTalent(choice.Id)
+		});
+	}
 
 	return(
 		<FormWrapper title="Selection de la race" subtitle="Votre race determinera votre talent inné, ainsi que les valeurs maximal de vos characteristiques. Certaines races commencent avec un talent biotique inné, mais auront moins de points pour developper leurs autres capacitées.">
@@ -33,10 +49,7 @@ export default function RaceSelection({
 									className="hidden peer"
 									type="radio" value={item.Id}
 									checked={species === item}
-									onChange={() =>
-										updateFields({
-										species: Species[item.Id]
-									})}
+									onChange={() => updateSelection(Species[item.Id])}
 								/>
 								<label
 									htmlFor={"Id-" + item.Id}
@@ -50,15 +63,14 @@ export default function RaceSelection({
 											{expanded ? minusIcon : plusIcon}
 										</div>
 									</div>
-									<div className={`px-6 text-sm text-gray-600 dark:text-gray-500 pt-0 overflow-hidden transition-[max-height] duration-200 ease-in ${expanded ? "max-h-40" : "max-h-0"}`}>
+									<div className={`px-6 text-sm text-gray-600 dark:text-gray-500 pt-0 overflow-hidden transition-[max-height] duration-200 ease-in ${expanded ? "max-h-80" : "max-h-0"}`}>
 										<p className="pb-4 text-center">
 											{item.Description}
 										</p>
 									</div>
 								</label>
 							</li>
-						)
-											 )
+						))
 					}
 				</ul>
 			</div>

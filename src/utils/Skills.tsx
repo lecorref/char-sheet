@@ -6,6 +6,7 @@ export enum ESkillGroup {
 	Social,
 	Tech,
 	Biotic,
+	Racial,
 }
 
 export interface ISkillGroup {
@@ -21,6 +22,7 @@ export const SkillGroups: ISkillGroup[
 	{type: ESkillGroup.Social, name: "Social"},
 	{type: ESkillGroup.Tech, name: "Technique"},
 	{type: ESkillGroup.Biotic, name: "Biotique"},
+	{type: ESkillGroup.Racial, name: "Racial"},
 ]
 
 export interface ISpecialities {

@@ -30,7 +30,6 @@ export default function SkillSelection({
 		current_skills.forEach((current) => {
 			acc += (1 - current.level);
 			const chosen = current.specialities.reduce((val, item) => (item.chosen ? val + 2 : val), 0)
-			console.log("getSkillpts for " + current.name + ": " + chosen)
 			acc -= chosen
 		})
 		return acc;

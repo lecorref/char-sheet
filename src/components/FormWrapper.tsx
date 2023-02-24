@@ -21,7 +21,7 @@ export function FormWrapper({ title, subtitle, children }: FormWrapperProps) {
 					</h5>
 					<div className="flex-none pl-2 text-2xl">{expanded ? minusIcon : plusIcon}</div>
 				</div>
-				<div className={`px-6 text-sm text-gray-600 dark:text-gray-500 pt-0 overflow-hidden transition-[max-height] duration-200 ease-in ${expanded ? "max-h-40" : "max-h-0"}`}>
+				<div className={`px-6 text-sm text-gray-700 dark:text-gray-400 pt-0 overflow-hidden transition-[max-height] duration-200 ease-in ${expanded ? "max-h-40" : "max-h-0"}`}>
 					<p className="pb-4 text-left">
 						{subtitle}
 					</p>

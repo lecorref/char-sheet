@@ -1,4 +1,5 @@
 import {ISkill} from "./Skills";
+import {ITalent} from "./Talents";
 
 export interface ILevel {
 	readonly Id: number;
@@ -48,7 +49,7 @@ export interface ICharacter {
 	career?: ICareer;
 	unit?: string;
 	attributes: [EAttribute, number][];
-	talents?: string;
+	talents?: ITalent[];
 	skills: ISkill[];
 	level: ILevel;
 }

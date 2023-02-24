@@ -12,9 +12,17 @@ import useLocalStorageState from "use-local-storage-state";
 import { useNavigate } from 'react-router-dom';
 import SkillSelection from "./creationForm/SkillSelection";
 import {ISkill, Skills} from "utils/Skills";
+import TalentSelection from "./creationForm/TalentSelection";
+import {RacialTalentList} from "utils/Talents";
 
 function defaultAttributes(species: ISpecies): [EAttribute, number][] {
 	return species.DefaultAttr.map(item => ([item.attr, item.Vdefault]))
+}
+
+function defaultRacialTalent() {
+	let talent = Object.create(RacialTalentList[0]);
+	talent.level = 1;
+	return [talent]
 }
 
 const INITIAL_DATA: ICharacter = {
@@ -25,7 +33,7 @@ const INITIAL_DATA: ICharacter = {
 	unit: '',
 	attributes: defaultAttributes(Species[0]),
 	skills: JSON.parse(JSON.stringify(Skills)),
-	talents: '',
+	talents: defaultRacialTalent(),
   level: Levels[2],
 };
 
@@ -36,6 +44,7 @@ function Creation() {
 	const { steps, currentStepIndex, step, isFirstStep, isLastStep, back, next } = Steps([
 		<CampaignSelection {...data} updateFields={updateFields} />,
 		<RaceSelection {...data} updateFields={updateFields} />,
+		<TalentSelection {...data} updateFields={updateFields} />,
 		<AttributeSelection {...data} updateFields={updateFields} />,
 		<SkillSelection {...data} updateFields={updateFields} />,
 		<DetailSelection {...data} updateFields={updateFields} />,
