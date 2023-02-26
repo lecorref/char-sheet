@@ -2,7 +2,7 @@ import {FormWrapper} from "components/FormWrapper"
 import SelectSkill from "components/SelectSkills"
 import {useState} from "react"
 import {ILevel, ISpecies} from "utils/Interfaces"
-import {ISkill, ISpecialities, SkillGroups, Skills} from "utils/Skills"
+import {ISkill, SkillGroups, Skills} from "utils/Skills"
 
 type SkillData = {
 	species: ISpecies,
@@ -22,7 +22,7 @@ export default function SkillSelection({
 }: SkillProps) {
 
 	function getSkillPoints(current_skills: ISkill[]) {
-		let acc = level.skill_points - ((species.Id == 0) ? 4 : 0);
+		let acc = level.skill_points - ((species.Id <= 1) ? 4 : 0);
 		current_skills.forEach((current) => {
 			acc += (1 - current.level);
 			const chosen = current.specialities.reduce((val, item) => (item.chosen ? val + 2 : val), 0)
@@ -40,7 +40,7 @@ export default function SkillSelection({
 				3 - Apprenti : votre personnage commence à être à l’aise avec cette compétence, mais peine encore à réaliser certaines actions simples.
 				4 - Professionnel : votre personnage dispose d’une bonne expérience dans le domaine. Il est à l’aise dans cette compétence mais ne brille pas particulièrement.`}>
 			<div>
-				Il reste {attr}/{level.skill_points - ((species.Id == 0) ? 4 : 0)} Points a attribuer.
+				Il reste {attr}/{level.skill_points - ((species.Id <= 1) ? 4 : 0)} Points a attribuer.
 			</div>
 			<ul className="grid gap-6 w-full md:grid-cols-2">
 				{
@@ -52,7 +52,7 @@ export default function SkillSelection({
 							<ul className="grid gap-6 w-full md:grid-cols-2">
 								{
 									Skills.map(item => (
-										(item.group == group.type) ?
+										(item.group === group.type) ?
 											(
 												<li key={item.name}>
 													<SelectSkill

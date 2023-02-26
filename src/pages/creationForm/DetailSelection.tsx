@@ -20,7 +20,7 @@ export default function DetailSelection({
 
 	function validateName(name: string) {
 		const exist = characters?.some(character => {
-			if (character.name == name) return true
+			if (character.name === name) return true
 			return false
 		});
 		if (exist) {

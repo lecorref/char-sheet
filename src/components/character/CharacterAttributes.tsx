@@ -32,7 +32,7 @@ export default function CharacterAttributes({
 			<div className={title_css} > &#x25A0; Santé </div>
 			<Health vigor={char.attributes[EAttribute.Vigor][1]} />
 			<div className={title_css} > &#x25A0; Talents </div>
-			<ul className="px-2 grid gap-2 w-full md:grid-cols-2">
+			<ul className="gap-2 flex flex-wrap shrink w-64">
 				{
 					char.talents && char.talents.map((talent, index) => (
 						(talent.level > 0 ?

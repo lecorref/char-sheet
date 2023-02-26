@@ -54,7 +54,7 @@ export default function Health({vigor}: {vigor: number}) {
 				<ul className="px-2 text-sm">
 					{
 						health.map((value, index) => (
-							<li key={index}>
+							<li key={`health-${index}`}>
 								<div
 								className="flex flex-row gap-x-2 w-full">
 								<pre>{health_value[index][0]}</pre>

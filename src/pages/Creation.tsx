@@ -53,15 +53,17 @@ function Creation() {
 		<DetailSelection {...data} updateFields={updateFields} />,
 	])
 
+	console.log(steps);
+
   function resetSkills() {
-		Skills.map(elem => {
+		Skills.forEach(elem => {
 			elem.level = 1;
 			resetSpecialties(elem)
 		})
 	}
 
 	function resetSpecialties(skill: ISkill) {
-		skill.specialities.map(elem => {
+		skill.specialities.forEach(elem => {
 			elem.chosen = false;
 		})
 	}
@@ -75,7 +77,7 @@ function Creation() {
 
 	function onSubmit(e: FormEvent) {
 		e.preventDefault()
-		if (currentStepIndex == 1) {
+		if (currentStepIndex === 1) {
 			updateFields({attributes: defaultAttributes(data.species)})
 			resetSkills()
 			updateFields({skills: JSON.parse(JSON.stringify(Skills))})

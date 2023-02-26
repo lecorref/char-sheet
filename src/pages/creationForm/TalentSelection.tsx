@@ -1,6 +1,5 @@
 import {FormWrapper} from "components/FormWrapper"
 import TalentCard from "components/TalentCard"
-import {useState} from "react"
 import {ILevel, ISpecies} from "utils/Interfaces"
 import {ITalent, BioticTalentList, RacialTalentList, TechTalentList, MentalTalentList, SocialTalentList, PhysicalTalentList} from "utils/Talents"
 
@@ -15,8 +14,6 @@ type TalentProps = TalentData & {
 }
 
 export default function TalentSelection ({
-	species,
-	level,
 	talents,
 	updateFields,
 }: TalentProps) {

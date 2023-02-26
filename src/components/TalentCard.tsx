@@ -29,10 +29,10 @@ export default function TalentCard({
 	const [level2, setLevel2] = useState(defaultState(2))
 
 	function defaultState(level: number) {
-		const index = talents?.findIndex(elem => (elem.name == talent.name))
-		if (index != undefined && index >= 0 && talents) {
+		const index = talents?.findIndex(elem => (elem.name === talent.name))
+		if (index !== undefined && index >= 0 && talents) {
 			const val = talents[index].level;
-			if (val > 0 && level == 1)
+			if (val > 0 && level === 1)
 				return true;
 			if (val > 1) {
 				return true;
@@ -42,8 +42,8 @@ export default function TalentCard({
 	}
 
 	function updateTalent(talent_array: ITalent[], level: number): ITalent[] {
-		const index = talent_array?.findIndex(elem => (elem.name == talent.name));
-		if (index == -1 || index == undefined){
+		const index = talent_array?.findIndex(elem => (elem.name === talent.name));
+		if (index === -1 || index === undefined){
 			talent.level = level;
 			talent_array.push(talent);
 		}
@@ -54,7 +54,7 @@ export default function TalentCard({
 	}
 
 	function updateFirstLevel(e: any) {
-		if (talent.type != ESkillGroup.Racial) {
+		if (talent.type !== ESkillGroup.Racial) {
 			const new_state = !level1;
 			setLevel1(new_state);
 			if (!new_state)
@@ -85,7 +85,7 @@ export default function TalentCard({
 				<div onClick={toggleExpanded}>
 					<div className="select-none block center justify-between flex flex-row">
 						<div className="font-semibold">
-							{(talent.species != (null || undefined) ? (talent.name + " (" + Species[talent.species].Name + ")") : talent.name)}
+							{(talent.species ? (talent.name + " (" + Species[talent.species].Name + ")") : talent.name)}
 						</div>
 						<div className="pl-2 text-2xl text-right">
 							{expanded ? minusIcon : plusIcon}

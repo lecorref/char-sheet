@@ -1,4 +1,3 @@
-import Landing from "./pages/Landing"
 import Characters from "./pages/Characters"
 import ComingSoon from "./pages/ComingSoon"
 import NotFound from "./pages/NotFound"

@@ -28,7 +28,7 @@ function EngagementDices({
 	}
 
 	const onSliderChange = (val: any, id: number) => {
-		let rest = dices - (val - (id == 0 ? bonus_dices.paragon : bonus_dices.renegade));
+		let rest = dices - (val - (id === 0 ? bonus_dices.paragon : bonus_dices.renegade));
 		if (rest >= 0) {
 			setDices(rest);
 			updateFields({bonus_dices: newDices(id, val)})

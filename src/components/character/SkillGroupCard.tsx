@@ -10,11 +10,10 @@ export default function SkillGroupCard({
 	skill_group,
 	skill_list,
 } : SkillGroupProps) {
-	let found : ISkill;
 
 	function getCharSkills(skill_name: string) {
 		const skill = skill_list.find(elem =>
-																	elem.name.toUpperCase() == skill_name.toUpperCase());
+																	elem.name.toUpperCase() === skill_name.toUpperCase());
 		if (skill === undefined)
 			return ( <Point points={1} total={4} />);
 		else {
@@ -22,8 +21,8 @@ export default function SkillGroupCard({
 				<>
 					<Point points={skill.level} total={4} />
 					<div>
-						{skill.specialities.map((elem, index) => (
-									 (elem.chosen == true?
+						{skill.specialities.map((elem) => (
+									 (elem.chosen === true?
 										 <p>{elem.name}</p>:
 											 <></>)
 						))}
