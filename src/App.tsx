@@ -12,7 +12,7 @@ function App() {
 		<BrowserRouter>
 			<Layout>
 				<Routes>
-					<Route path='/' element={<Landing />} />
+					<Route path='/' element={<Characters />} />
 					<Route path='/characters' element={<Characters/>} />
 					<Route path='/character_creation' element={<Creation />} />
 					<Route path='/character/:charId' element={<Character/>} />

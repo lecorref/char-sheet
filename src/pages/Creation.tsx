@@ -14,13 +14,14 @@ import SkillSelection from "./creationForm/SkillSelection";
 import {ISkill, Skills} from "utils/Skills";
 import TalentSelection from "./creationForm/TalentSelection";
 import {RacialTalentList} from "utils/Talents";
+import EngagementDices from "./creationForm/EngagementDices";
 
 function defaultAttributes(species: ISpecies): [EAttribute, number][] {
 	return species.DefaultAttr.map(item => ([item.attr, item.Vdefault]))
 }
 
 function defaultRacialTalent() {
-	let talent = Object.create(RacialTalentList[0]);
+	let talent = JSON.parse(JSON.stringify(RacialTalentList[0]));
 	talent.level = 1;
 	return [talent]
 }
@@ -35,6 +36,7 @@ const INITIAL_DATA: ICharacter = {
 	skills: JSON.parse(JSON.stringify(Skills)),
 	talents: defaultRacialTalent(),
   level: Levels[2],
+	bonus_dices: {paragon: 0, renegade: 0}
 };
 
 function Creation() {
@@ -47,6 +49,7 @@ function Creation() {
 		<TalentSelection {...data} updateFields={updateFields} />,
 		<AttributeSelection {...data} updateFields={updateFields} />,
 		<SkillSelection {...data} updateFields={updateFields} />,
+		<EngagementDices {...data} updateFields={updateFields} />,
 		<DetailSelection {...data} updateFields={updateFields} />,
 	])
 

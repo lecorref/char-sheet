@@ -25,7 +25,7 @@ export default function RaceSelection({
 	const toggleExpanded = () => setExpanded((current) => !current);
 
 	function updateTalent(id: number): ITalent[] {
-		let talent = Object.create(RacialTalentList[id]);
+		let talent = JSON.parse(JSON.stringify(RacialTalentList[id]));
 		talent.level = 1;
 		return ([talent]);
 	}

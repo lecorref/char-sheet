@@ -20,7 +20,7 @@ export const Species: readonly ISpecies[] = [
 			{attr: EAttribute.Perception, name: "Perception", Vmax: 5, Vdefault: 2},
 			{attr: EAttribute.Vigor, name: "Vigeur", Vmax: 6, Vdefault: 2},
 			{attr:EAttribute.Dexterity, name: "Dexterité", Vmax: 5, Vdefault: 2},
-			{attr: EAttribute.Biotics, name: "Biotique", Vmax: 2, Vdefault: 2}],
+			{attr: EAttribute.Biotics, name: "Biotique", Vmax: 5, Vdefault: 2}],
 			Description: "Originaires de la planète Rakhana, les Drells ont été sauvés de l'extinction par les Hanari il y a plus de deux siècles. Ils vivent désormais sur Kahjé, où ils servent les Hanari au travers d'un pacte nommé le Synacte. Espèce mineure sur la scène galactique, les Drells sont toutefois parvenus à se rendre indispensables aux yeux des Hanari."
 	},
 	{

@@ -26,6 +26,11 @@ export enum EAttribute {
 	Biotics,
 }
 
+export interface IBonusDice {
+	paragon: number,
+	renegade: number,
+}
+
 export interface IAttribute {
 	readonly attr: EAttribute;
 	readonly name: string;
@@ -52,4 +57,5 @@ export interface ICharacter {
 	talents?: ITalent[];
 	skills: ISkill[];
 	level: ILevel;
+	bonus_dices: IBonusDice;
 }

@@ -93,7 +93,7 @@ export default function SelectSkill({
 					onChange={e => onSliderChange(e)}
 				/>
 			</div>
-			<ul className={`pt-2 text-gray-800 dark:text-gray-200 pt-0 overflow-hidden transition-[max-height] duration-200 ease-in ${value == 4 ? "max-h-40" : "max-h-0"}`}
+			<ul className={`pt-2 text-gray-800 dark:text-gray-200 pt-0 overflow-hidden transition-[max-height] duration-200 ease-in ${value == 4 ? "max-h-80" : "max-h-0"}`}
 			>
 				{
 					item.specialities.map(({name, chosen}, index) => (
