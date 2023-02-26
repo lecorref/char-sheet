@@ -11,18 +11,17 @@ export enum ESkillGroup {
 
 export interface ISkillGroup {
 	readonly type: ESkillGroup;
-	readonly name: string
+	readonly name: string;
+	readonly skill_list: string[]
 }
 
 export const SkillGroups: ISkillGroup[
 ] = [
-
-	{type: ESkillGroup.Mental, name: "Mental"},
-	{type: ESkillGroup.Physical, name: "Physique"},
-	{type: ESkillGroup.Social, name: "Social"},
-	{type: ESkillGroup.Tech, name: "Technique"},
-	{type: ESkillGroup.Biotic, name: "Biotique"},
-	{type: ESkillGroup.Racial, name: "Racial"},
+	{ type: ESkillGroup.Mental, name: "Mental", skill_list: ["Connaissance", "Débrouillardise", "Sens"], },
+	{type: ESkillGroup.Physical, name: "Physique", skill_list: ["Armes à feu", "Corps à corps", "Habileté"]},
+	{type: ESkillGroup.Social, name: "Social", skill_list: ["Éloquence", "Empathie", "Influence"]},
+	{type: ESkillGroup.Tech, name: "Technique", skill_list: ["Interface", "Omnitech", "Pilotage"]},
+	{type: ESkillGroup.Biotic, name: "Biotique", skill_list: ["Kinésie", "Égide", "Chaos"]},
 ]
 
 export interface ISpecialities {
@@ -43,9 +42,8 @@ export interface ISkill {
 
 export const Skills: ISkill[
 ] = [
-
 	{
-		name: "CONNAISSANCE",
+		name: "Connaissance",
 		description: "La compétence Connaissance représente l’ensemble des savoirs et des savoirs-faires acquis par votre personnage, qu’il s’agisse de culture générale, de connaissances pointues dans un domaine (science, littérature, art, histoire, etc.) ou d’une capacité à réaliser des tâches complexes requérant un savant mélange de précision et de connaissances (chirurgie, électronique, etc).",
 		level : 1,
 		group: ESkillGroup.Mental,
@@ -63,7 +61,7 @@ export const Skills: ISkill[
 			],
 	},
 	{
-		name: "DÉBROUILLARDISE",
+		name: "Débrouillardise",
 		description: "La Débrouillardise représente la capacité de votre personnage à se sortir d’un mauvais pas, à trouver une solution en urgence à un problème ou à réaliser des tâches simples mais très utiles comme prodiguer les premiers soins, réparer une navette, fabriquer un piège ou adopter les bons comportements pour survivre en milieu hostile",
 		level : 1,
 		group: ESkillGroup.Mental,
@@ -76,7 +74,7 @@ export const Skills: ISkill[
 			EAttribute.Dexterity, EAttribute.Mind]
 	},
 	{
-		name: "SENS",
+		name: "Sens",
 		description: "Le Sens représente la capacité de votre personnage à percevoir son environnement en utilisant ses cinq sens : vue, ouïe, odorat, goût et toucher. Le Sens permet de déceler des détails ou de rester sur ses gardes.",
 		level : 1,
 		group: ESkillGroup.Mental,
@@ -90,7 +88,7 @@ export const Skills: ISkill[
 			EAttribute.Perception]
 	},
 	{
-		name: "ARMES À FEU",
+		name: "Armes à feu",
 		description: "La compétence Arme à feu représente la capacité de votre personnage à utiliser tous types d’armes à feu : pistolets, fusils, armes automatiques, lance-grenades, etc",
 		level : 1,
 		group: ESkillGroup.Physical,
@@ -105,7 +103,7 @@ export const Skills: ISkill[
 			EAttribute.Dexterity]
 	},
 	{
-		name: "CORPS À CORPS",
+		name: "Corps à corps",
 		description: "La compétence Corps-à-corps représente la capacité de votre personnage à combattre à mains nues ou avec tout type d’armes blanches : couteau, sabre, masse, etc.",
 		level : 1,
 		group: ESkillGroup.Physical,
@@ -119,7 +117,7 @@ export const Skills: ISkill[
 			EAttribute.Vigor]
 	},
 	{
-		name: "HABILETÉ",
+		name: "Habileté",
 		description: "L’Habileté représente la maîtrise que votre personnage a de son corps, sa capacité à réaliser des actions physiques complexes, requérant de la coordination ou un entraînement particulier",
 		level : 1,
 		group: ESkillGroup.Physical,
@@ -133,7 +131,7 @@ export const Skills: ISkill[
 			EAttribute.Dexterity]
 	},
 	{
-		name: "ÉLOQUENCE",
+		name: "Éloquence",
 		description: "L’Éloquence représente la capacité de votre personnage à s’exprimer avec clarté, à discourir devant un auditoire, à se faire des amis ou à adopter les bons comportements en société",
 		level : 1,
 		group: ESkillGroup.Social,
@@ -145,7 +143,7 @@ export const Skills: ISkill[
 			EAttribute.Charisma]
 	},
 	{
-		name: "EMPATHIE",
+		name: "Empathie",
 		description: "L’Empathie représente la capacité de votre personnage à comprendre les émotions et les motivations de ses interlocuteurs, quelle que soit leur espèce.  Bien comprendre son interlocuteur permet parfois de savoir s’il ment ou vous cache des informations, s’il attend quelque chose de vous de manière tacite, s’il a besoin de réconfort mais n’ose pas l’avouer, etc",
 		level : 1,
 		group: ESkillGroup.Social,
@@ -165,7 +163,7 @@ export const Skills: ISkill[
 			EAttribute.Perception]
 	},
 	{
-		name: "INFLUENCE",
+		name: "Influence",
 		description: "L’Influence représente la capacité de votre personnage à manipuler une personne pour l’inciter à agir selon sa volonté, à croire à ses mensonges ou à tomber sous son charme.",
 		level : 1,
 		group: ESkillGroup.Social,
@@ -181,7 +179,7 @@ export const Skills: ISkill[
 			EAttribute.Charisma]
 	},
 	{
-		name: "INTERFACE",
+		name: "Interface",
 		description: "L’Interface représente la capacité de votre personnage à utiliser des systèmes informatiques, les Intelligences Virtuelles (IV) ou les Intelligences Articielles (IA), à les programmer, les pirater, etc.",
 		level : 1,
 		group: ESkillGroup.Tech,
@@ -195,7 +193,7 @@ export const Skills: ISkill[
 			EAttribute.Mind]
 	},
 	{
-		name: "OMNITECH",
+		name: "Omnitech",
 		description: "La compétence Omnitech représente la capacité de votre personnage à utiliser son omnitech et les nombreux modules qui peuvent y être installés. Il s’agit le plus souvent d’un usage lié à un contexte de combat ou de guerre électronique.",
 		level : 1,
 		group: ESkillGroup.Tech,
@@ -209,7 +207,7 @@ export const Skills: ISkill[
 			EAttribute.Mind]
 	},
 	{
-		name: "PILOTAGE",
+		name: "Pilotage",
 		description: "La compétence Pilotage représente la capacité de votre personnage à piloter tous types d’engins : véhicules terrestres, navettes, mécas, drones, etc.",
 		level : 1,
 		group: ESkillGroup.Tech,
@@ -223,7 +221,7 @@ export const Skills: ISkill[
 			EAttribute.Dexterity]
 	},
 	{
-		name: "KINÉSIE",
+		name: "Kinésie",
 		description: "La Kinésie représente la capacité de votre personnage à déplacer des objets par la pensée. Il peut s’agir de mouvements fins et précis comme de violentes projections d’objets ou d’individus",
 		level : 1,
 		group: ESkillGroup.Biotic,
@@ -235,7 +233,7 @@ export const Skills: ISkill[
 			EAttribute.Biotics]
 	},
 	{
-		name: "ÉGIDE",
+		name: "Égide",
 		description: "L’Égide représente la capacité de votre personnage à créer des champs de protection biotique de formes variées. Deux formes sont toutefois les plus courantes : le bouclier qui entoure un individu ou le dôme qui protège un groupe de combattants.",
 		level : 1,
 		group: ESkillGroup.Biotic,
@@ -247,7 +245,7 @@ export const Skills: ISkill[
 			EAttribute.Biotics]
 	},
 	{
-		name: "CHAOS",
+		name: "Chaos",
 		description: "Le Chaos représente la capacité de votre personnage à déstructurer la matière grâce à des champs de gravité chaotiques. Il est ainsi possible de rendre la matière plus friable ou de causer des dommages à des créatures organiques",
 		level : 1,
 		group: ESkillGroup.Biotic,
