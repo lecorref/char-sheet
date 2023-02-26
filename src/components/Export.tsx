@@ -1,6 +1,6 @@
 import {CharacterProps} from "utils/Types";
 
-const ClassCss = "dark:text-gray-200 hover:bg-gray-700 text-gray-1000 px-3 py-2 rounded-md text-lg font-light"
+const ClassCss = "dark:text-gray-200 hover:bg-gray-700 text-gray-1000 rounded-md font-light"
 
 export function ExportCharacter({char}: CharacterProps) {
 	console.log(char);

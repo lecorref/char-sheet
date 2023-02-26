@@ -26,20 +26,20 @@ export default function SelectSkill({
 
 	function getSkillValue(): number {
 		let ret = skills.find(elem => (elem.name === item.name))
-		return ret == undefined ? 1 : ret.level
+		return ret === undefined ? 1 : ret.level
 	}
 
 	const onSliderChange = (val: any) => {
-		if (val == 0)
+		if (val === 0)
 			return ;
 		let points = skillPoint - (val - value);
 		if (value === 4 && val < 4) {
 			item.specialities.forEach(elem => {
-				if (elem.chosen == true) {
+				if (elem.chosen === true) {
 					elem.chosen = false;
 					points += 2;}});
 			updateFields({skills: skills.map(skill => {
-				if (skill.name == item.name) {
+				if (skill.name === item.name) {
 					skill.specialities.map(elem => {
 						elem.chosen = false;
 						return elem;})}
@@ -49,7 +49,7 @@ export default function SelectSkill({
 			setValue(val);
 			setSkillPoint(points);
 			updateFields({skills: skills.map(elem => {
-				if (elem.name == item.name)
+				if (elem.name === item.name)
 					elem.level = val;
 				return elem;})})}
 	}
@@ -59,7 +59,7 @@ export default function SelectSkill({
 		if (points >= 0) {
 			setSkillPoint(points);
 			updateFields({skills: skills.map(skill => {
-				if (skill.name == item.name) {
+				if (skill.name === item.name) {
 					skill.specialities.map((elem, index) => {
 						if (index === position)
 							elem.chosen = !chosen;
@@ -68,7 +68,7 @@ export default function SelectSkill({
 				}
 				return skill;
 			})});
-			item.specialities.map((elem, index) => {
+			item.specialities.forEach((elem, index) => {
 				if (index === position)
 					elem.chosen = !chosen;
 			});
@@ -93,7 +93,7 @@ export default function SelectSkill({
 					onChange={e => onSliderChange(e)}
 				/>
 			</div>
-			<ul className={`pt-2 text-gray-800 dark:text-gray-200 pt-0 overflow-hidden transition-[max-height] duration-200 ease-in ${value == 4 ? "max-h-80" : "max-h-0"}`}
+			<ul className={`pt-2 text-gray-800 dark:text-gray-200 pt-0 overflow-hidden transition-[max-height] duration-200 ease-in ${value === 4 ? "max-h-80" : "max-h-0"}`}
 			>
 				{
 					item.specialities.map(({name, chosen}, index) => (

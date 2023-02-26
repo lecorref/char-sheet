@@ -26,7 +26,7 @@ export default function SelectAttribute({
 
 	function getAttributeValue(attributes: [EAttribute, number][], value: EAttribute): [EAttribute, number] {
 		let ret = attributes.find(elem => (elem[0] === value));
-		if (ret == undefined)
+		if (ret === undefined)
 			return [EAttribute.Mind, 2];
 		return ret;
 	}
@@ -40,7 +40,7 @@ export default function SelectAttribute({
 				setValue(val);
 				setAttrPoint(points);
 				updateFields({attributes: attributes.map(elem  => {
-					if (elem[0] == attr.attr)
+					if (elem[0] === attr.attr)
 						elem[1] = val;
 					return elem;
 				})})

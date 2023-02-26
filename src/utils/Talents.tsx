@@ -95,7 +95,7 @@ export const BioticTalentList: ITalent[] = [
 	},
 	{
 		level: 0,
-		name: "MAîtrise des charges",
+		name: "Maîtrise des charges",
 		description_1: "Lors d’une surcharge biotique, le premier 10 obtenu sur un dé d’engagement est ignoré.",
 		description_2: "Sur un jet de Biotique, vous pouvez vous infliger une ou plusieurs blessures légères pour gagner autant de succès bonus que de blessures auto-infligées",
 		type: ESkillGroup.Biotic,

@@ -1,5 +1,7 @@
 {
 	"name": "char-sheet",
+	"description": "your app description",
+	"author": "xyz <xyz@gmail.com>",
 	"version": "0.1.0",
 	"private": true,
 	"dependencies": {
@@ -11,12 +13,10 @@
 		"@types/node": "^18.11.16",
 		"@types/react": "^18.0.26",
 		"@types/react-dom": "^18.0.9",
-		"ajv": "^8.11.2",
 		"chance": "^1.1.9",
 		"rc-slider": "^10.1.1",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
-		"react-redux": "^8.0.5",
 		"react-router-dom": "^6.5.0",
 		"react-scripts": "^5.0.1",
 		"react-toggle-dark-mode": "^1.1.1",
@@ -26,13 +26,36 @@
 	},
 	"main": "public/electron.js",
 	"homepage": "./",
+	"build": {
+		"appId": "com.electron.masseEffectNouvelleEre",
+		"productName": "ME: Nouvelle Ere App",
+		"files": [
+			"build/**/*",
+			"node_modules/**/*"
+		],
+		"directories": {
+			"buildResources": "public"
+		},
+		"mac": {
+			"target": "dmg"
+		},
+		"win": {
+			"target": "nsis"
+		},
+		"linux": {
+			"target": "deb"
+		}
+	},
 	"scripts": {
-		"start": "react-app-rewired start",
-		"build": "react-app-rewired build",
-		"test": "react-app-rewired test",
-		"eject": "react-app-rewired eject",
+		"start": "react-scripts start",
+		"build": "react-scripts build",
+		"test": "react-scripts test",
+		"eject": "react-scripts eject",
 		"dev": "concurrently -k \"BROWSER=none npm start\" \"npm:electron\"",
-		"electron": "wait-on tcp:3000 && electron ."
+		"electron": "wait-on tcp:3000 && electron .",
+		"electron:package:mac": "npm run build && electron-builder -m -c.extraMetadata.main=build/electron.js",
+		"electron:package:win": "npm run build && electron-builder -w -c.extraMetadata.main=build/electron.js",
+		"electron:package:linux": "npm run build && electron-builder -l -c.extraMetadata.main=build/electron.js"
 	},
 	"eslintConfig": {
 		"extends": [
@@ -42,14 +65,12 @@
 	},
 	"browserslist": {
 		"production": [
-			">0.2%",
-			"not dead",
-			"not op_mini all"
+			"last 1 electron version"
 		],
 		"development": [
 			"last 1 chrome version",
 			"last 1 firefox version",
-			"last 1 safari version"
+			"last 1 electron version"
 		]
 	},
 	"devDependencies": {
@@ -57,9 +78,9 @@
 		"autoprefixer": "^10.4.13",
 		"concurrently": "^7.6.0",
 		"electron": "^22.0.0",
+		"electron-builder": "^23.6.0",
 		"electron-is-dev": "^2.0.0",
 		"postcss": "^8.4.20",
-		"react-app-rewired": "^2.2.1",
 		"tailwindcss": "^3.2.4",
 		"wait-on": "^6.0.1"
 	}

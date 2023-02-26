@@ -9,8 +9,8 @@ export function Character() {
 	const name = param.charId
 	const [characters, ] = useLocalStorageState<ICharacter[]>("characters")
 
-	const char = characters?.find(character => character.name == name);
-	if (char != undefined) {
+	const char = characters?.find(character => character.name === name);
+	if (char !== undefined) {
 		return <CharacterSheet char={char} />
 	}
 	return <NotFound />

@@ -1,3 +1,4 @@
+import {ExportCharacter} from "components/Export";
 import Point from "components/Points";
 import { CharacterProps } from "utils/Types";
 
@@ -9,10 +10,10 @@ export default function CharacterPresentation(
 		const capitalize = (s: string) => (s && s[0].toUpperCase() + s.slice(1)) || ""
 		return (
 			<div
-				className="p-4 gap-2 flex-initial flex flex-col bg-white border border-gray-200 dark:border-gray-700  dark:text-gray-300 dark:bg-gray-900"
+				className="p-4 gap-1 flex-initial flex flex-col bg-white border border-gray-200 dark:border-gray-700  dark:text-gray-300 dark:bg-gray-900"
 			>
 				<div
-					className="p-2 place-content-center text-3xl font-bold center w-full dark:bg-gray-700 bg-gray-200 dark:text-yellow-400 text-center"
+					className="p-2 place-content-center text-xl font-bold center w-full dark:bg-gray-700 bg-gray-200 dark:text-yellow-400 text-center"
 				>
 					{char.species.Name.toUpperCase()}
 				</div>
@@ -28,9 +29,12 @@ export default function CharacterPresentation(
 					<div className={key_css}>&#x25A0; Niveau </div>
 					<div className={value_css}> {char.level.Name} </div>
 				</div>
+				<div className="justify-center flex space-x-2">
+					<ExportCharacter char={char} />
+				</div>
 				<div>
 					<div className="py-2 justify-center border border-blue-500 text-blue-500">
-						<legend className="text-center">Consiliation</legend>
+						<legend className="text-center">Conciliation</legend>
 						<Point points={char.bonus_dices.paragon} total={9}/>
 					</div>
 					<div className=" py-2 justify-center border border-red-500 text-red-500">

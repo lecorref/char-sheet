@@ -13,7 +13,7 @@ export function FormWrapper({ title, subtitle, children }: FormWrapperProps) {
 	const [expanded, setExpanded] = useState(false)
 	const toggleExpanded = () => setExpanded((current) => !current)
 	return (
-		<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+		<div className="max-w-7xl mx-auto px-4 sm:px-4 lg:px-8">
 			<div className="center text-xl leading-6 text-gray-900 dark:text-gray-200" onClick={toggleExpanded}>
 				<div className="px-6 text-left items-center h-20 select-none flex justify-between flex-row">
 					<h5 className="flex-1">
