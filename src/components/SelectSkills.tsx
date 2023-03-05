@@ -37,7 +37,7 @@ export default function SelectSkill({
 			item.specialities.forEach(elem => {
 				if (elem.chosen === true) {
 					elem.chosen = false;
-					points += 2;}});
+					points += 1;}});
 			updateFields({skills: skills.map(skill => {
 				if (skill.name === item.name) {
 					skill.specialities.map(elem => {
@@ -55,7 +55,7 @@ export default function SelectSkill({
 	}
 
 	const onCheckedChange = (position: number, chosen: boolean) => {
-		let points = skillPoint + (chosen ? 2 : -2);
+		let points = skillPoint + (chosen ? 1 : -1);
 		if (points >= 0) {
 			setSkillPoint(points);
 			updateFields({skills: skills.map(skill => {

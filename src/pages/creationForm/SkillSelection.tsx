@@ -25,7 +25,7 @@ export default function SkillSelection({
 		let acc = level.skill_points - ((species.Id <= 1) ? 4 : 0);
 		current_skills.forEach((current) => {
 			acc += (1 - current.level);
-			const chosen = current.specialities.reduce((val, item) => (item.chosen ? val + 2 : val), 0)
+			const chosen = current.specialities.reduce((val, item) => (item.chosen ? val + 1 : val), 0)
 			acc -= chosen
 		})
 		return acc;
