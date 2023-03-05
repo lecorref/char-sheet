@@ -3,12 +3,12 @@ import ComingSoon from "./pages/ComingSoon"
 import NotFound from "./pages/NotFound"
 import Creation from "./pages/Creation"
 import { Character } from "./pages/Character"
-import { Route, Routes, BrowserRouter } from 'react-router-dom'
+import { Route, Routes, BrowserRouter, HashRouter } from 'react-router-dom'
 import Layout from "components/Layout"
 
 function App() {
 	return (
-		<BrowserRouter>
+		<HashRouter>
 			<Layout>
 				<Routes>
 					<Route path='/' element={<Characters />} />
@@ -20,7 +20,7 @@ function App() {
 					<Route path='*' element={<NotFound />} />
 				</Routes>
 			</Layout>
-		</BrowserRouter>
+		</HashRouter>
 	);
 }
 
